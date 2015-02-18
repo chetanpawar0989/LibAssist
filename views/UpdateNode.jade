@@ -1,0 +1,70 @@
+doctype html
+html
+	include head  
+body(style='background-color: #FFFFFF;')
+	.container.jumbotron(style='background-color: #C00;color: white;margin-bottom: 0px;	')
+		a(href='/' style='color: white;')
+			h1(style='text-align:center;') Student Library Assistant 
+		h2(style='text-align:center;') Dashboard
+	.container(style='background-color: #C00;color: white;margin-bottom: 0px;	')
+		.col-sm-12
+			hr
+	.container(style='background-color: #C00;color: white;margin-bottom: 0px;	')
+		.col-sm-6
+			h2
+				a#lnkUpdateBecon(href='/UpdateNode' style='color: white;') Update Beacon Data
+		.col-sm-6(style='text-align: right;')
+			h2
+				a#lnkUpdateBecon(href='/dashboard' style='color: white;') Dashboard
+	.container(style='background-color: #C00;color: white;margin-bottom: 0px;	')
+		.col-sm-12
+			hr
+	.container(style='background-color: black;color: white;margin-bottom: 0px; margin-top: 0px;	')
+		h2(style='text-align:center;') Update Beacon Data		
+	.container(style='background-color: black;color: white;')
+		form(name="form1", method="post")
+			.col-sm-12
+				.col-sm-1
+				.col-sm-2
+					input#txtBeconId(type=text, name="txtBeconId", text = "" required='true' placeholder='Beacon Id' style='color: black;')
+				.col-sm-2
+					input#txtBeconName(type=text, name="txtBeconName", text = "" required='true' placeholder='Beacon Name' style='color: black;')
+				.col-sm-2
+					input#txtCustomMessage(type=text, name="txtCustomMessage", text = "" required='true' placeholder='Custom Message' style='color: black;')
+				.col-sm-4
+					.col-sm-6
+						button.btn.btn-default#btnSubmit(type="submit", onClick='beforeSubmit()') Add / Update
+					.col-sm-6
+						button.btn.btn-default(type="button", onClick='clearText()') Clear
+			.col-sm-12(style='background-color: black;color: white;')
+				.col-sm-12
+					hr
+			.col-sm-12(style='background-color: black;color: white;')
+				.col-sm-12
+					.col-sm-4(style='border: 1px solid;')
+						h4(style='text-align: left') Beacon Id
+					.col-sm-2(style='border: 1px solid;')
+						h4(style='text-align: left') Beacon Name
+					.col-sm-3(style='border: 1px solid;')
+						h4(style='text-align: left') Message to display
+					.col-sm-3(style='border: 1px solid;')
+						h4(style='text-align: center') Action
+				.col-sm-12
+				for bkon in bkondata
+					.col-sm-12
+						.col-sm-4(style='border-left: 1px solid; border-right: 1px solid;')
+							p #{bkon.key}
+						.col-sm-2(style='border-left: 1px solid; border-right: 1px solid;')
+							p #{bkon.information.beconName}
+						.col-sm-3(style='border-left: 1px solid; border-right: 1px solid;')
+							p #{bkon.information.message}
+						.col-sm-3(style='border-left: 1px solid; border-right: 1px solid;')
+							.col-sm-6
+								button.btn.btn-default(type="button", onClick="UpdateButton('#{bkon.key}', '#{bkon.information.beconName}', '#{bkon.information.message}')" ) Update
+							.col-sm-6
+								button.btn.btn-default(id = bkon.key, type="submit", onClick="UpdateButton('#{bkon.key}', '#{bkon.information.beconName}', '#{bkon.information.message}')") Delete
+						
+				.col-sm-12
+					.col-sm-12(style='border-top: 1px solid;')
+						br
+						

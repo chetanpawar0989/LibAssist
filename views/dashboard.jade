@@ -1,0 +1,40 @@
+//- body.jade
+//- This file provides the HTML body part.
+include head.jade
+
+body(style='background-color: #FFFFFF;')
+	script(src='/javascripts/update.js')
+	.container.jumbotron(style='background-color: #C00;color: white;margin-bottom: 0px;	')
+		a(href='/' style='color: white;')
+			h1(style='text-align:center;') Student Library Assistant 
+		h2(style='text-align:center;') Dashboard
+	.container(style='background-color: #C00;color: white;margin-bottom: 0px;	')
+		.col-sm-12
+			hr
+	.container(style='background-color: #C00;color: white;margin-bottom: 0px;	')
+		.col-sm-6
+			h2
+				a#lnkUpdateBecon(href='/UpdateNode' style='color: white;') Update Beacon Data
+		.col-sm-6(style='text-align: right;')
+			h2
+				a#lnkUpdateBecon(href='/dashboard' style='color: white;') Dashboard
+	.container(style='background-color: #C00;color: white;margin-bottom: 0px;	')
+		.col-sm-12
+			hr
+	.container(style='background-color: black;color: white;')
+		br
+		.col-sm-12
+			.col-sm-6(style='border: 1px solid;') 
+				h2 User
+			.col-sm-6(style='border: 1px solid;') 
+				h2 Location
+		for bkon in bkondata
+			.col-sm-12
+				.col-sm-6(style='border-left: 1px solid; border-right: 1px solid;') 
+					h3 #{bkon.key}
+				.col-sm-6(style='border-left: 1px solid; border-right: 1px solid;') 
+					h3 #{bkon.message.location}
+		.col-sm-12
+			.col-sm-12(style='border-top: 1px solid;')
+				br
+	

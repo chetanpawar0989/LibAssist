@@ -1,0 +1,14 @@
+{
+	"name": "StudentLibraryAssistant",
+	"version": "0.0.1",
+	"description": "Student Library Assistant demo",
+	"dependencies": {
+		"express": "*",
+		"body-parser": "*",
+		"jade": "*"
+	},
+	"engines": {
+		"node": "*"
+	},
+	"repository": {}
+}
